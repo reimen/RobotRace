@@ -1,14 +1,20 @@
 public class Robot {
   private int id;
+  private static int maxId;
   private String name;
   private int distance;
   private int energy;
 
   public Robot(int id, String name, int distance, int energy) {
     this.id = id;
+    maxId = id;
     this.name = name;
     this.distance = distance;
     this.energy = energy;
+  }
+
+  public Robot(String name) {
+    this(++maxId, name, 0, 100);
   }
 
   public int getId() {

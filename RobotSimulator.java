@@ -1,17 +1,18 @@
 public class RobotSimulator {
   public static void main(String[] args) {
-    Robot robot1 = new Robot(1, "Ann", 0, 100);
-    Robot robot2 = new Robot(2, "Bats", 0, 100);
-    Robot robot3 = new Robot(3, "Carl", 0, 100);
-    Robot robot4 = new Robot(4, "Deen", 0, 100);
-    Robot robot5 = new Robot(5, "Elic", 0, 100);
-    Robot robot6 = new Robot(6, "Feel", 0, 100);
+    Robot[] robots = new Robot[6];
+    String[] robotNames = {"Ann", "Bat", "Carl", "Deen", "Eric", "Flora"};
 
-    System.out.println(robot1.getInfo());
-    System.out.println(robot2.getInfo());
-    System.out.println(robot3.getInfo());
-    System.out.println(robot4.getInfo());
-    System.out.println(robot5.getInfo());
-    System.out.println(robot6.getInfo());
+    for(int i = 0; i < 3; i++) {
+      robots[i] = new Robot(i, robotNames[i], 0, 100);
+    }
+
+    for(int i = 0; i < 3; i++) {
+      robots[i+3] = new Robot(robotNames[i+3]);
+    }
+
+    for(int i = 0; i < 6; i++) {
+      System.out.println(robots[i].getInfo());
+    }
   }
 }
