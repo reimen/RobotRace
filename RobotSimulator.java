@@ -1,18 +1,48 @@
+import java.util.Random;
+
 public class RobotSimulator {
-  public static void main(String[] args) {
-    Robot[] robots = new Robot[6];
-    String[] robotNames = {"Ann", "Bat", "Carl", "Deen", "Eric", "Flora"};
+		private RacingRobot[] robotArray;
+		private String[] robotNameArray = {"Ebi", "Kani", "Uni", "Tako", "Ika", "Maguro"};
 
-    for(int i = 0; i < 3; i++) {
-      robots[i] = new Robot(i, robotNames[i], 0, 100);
-    }
+	public RobotSimulator() {
+		// ロボット登録
+		register();
 
-    for(int i = 0; i < 3; i++) {
-      robots[i+3] = new Robot(robotNames[i+3]);
-    }
+		// 初期状態
+		printRobotInfo();
 
-    for(int i = 0; i < 6; i++) {
-      System.out.println(robots[i].getInfo());
-    }
-  }
+		System.out.println("レース開始！");
+		for(int i=0; i<5; i++) {
+			for(int j=0; j<6; j++) {
+				robotArray[j].run();
+			}
+		}
+		System.out.println("レース終了！");
+
+		// レース後
+		printRobotInfo();
+
+	}
+
+	public void register() {
+		robotArray = new RacingRobot[6];
+		Random random = new Random();
+
+		for(int i=0; i<6; i++) {
+			robotArray[i] = new RacingRobot(robotNameArray[i] , random.nextInt(10));
+		}
+	}
+
+	public void printRobotInfo() {
+		System.out.println("-----ロボット情報-----");
+		for(int i=0; i<6; i++) {
+			System.out.println(robotArray[i].getInfo());
+		}
+		System.out.println("--------------------");
+	}
+
+	public static void main(String[] args) {
+		new RobotSimulator();
+	}
+
 }

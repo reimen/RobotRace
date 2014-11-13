@@ -1,6 +1,6 @@
 public class Robot {
   private int id;
-  private static int maxId;
+  private static int maxId = 0;
   private String name;
   private int distance;
   private int energy;
